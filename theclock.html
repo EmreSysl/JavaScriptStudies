@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clock</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<h2 id="result"></h2>
+
+	<script type="text/javascript">
+		"use strict";
+		
+		setInterval(hour,1000);
+
+		function hour(){
+
+			var date,hours,minutes,seconds;
+			date = new Date();
+			// hours=date.getHours();
+			// minutes=date.getMinutes();
+			// seconds=date.getSeconds();
+			document.querySelector("#result").innerHTML = "Time: " + date.toLocaleTimeString();
+		}
+
+	</script>
+	
+</body>
+</html>

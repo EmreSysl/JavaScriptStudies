@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prompt/confirm</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+
+		var x = confirm("Sayfadan ayrılmak istediğinize emin misiniz?");
+		if(x == true){
+			alert("Bizi ziyaret ettiğiniz için teşekkür ederiz")
+		}else{
+			alert("Sayfamızda keyifli zaman geçirmenizi dileriz")
+		}
+
+		var nmbr = prompt("Lütfen bir sayı giriniz");
+		if(nmbr == ""){
+			document.write("Lütfen bir sayı giriniz");
+		} else if(nmbr < 0){
+			document.write("Negatif bir değer girdiniz");
+		} else if(nmbr == 0){
+			document.write("0 sayısını değer olarak girdiniz");
+		} else if(nmbr > 0){
+			document.write("Pozitif bir değer girdiniz");
+		} else{
+			document.write("Geçersiz bir değer girdiniz")
+		}
+		
+	</script>
+</body>
+</html>

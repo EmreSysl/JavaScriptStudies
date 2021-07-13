@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Find the Hypotenuse</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<p>First Side</p>
+	<input type="text" name="nmbr1" id="nmbr1">
+	<p>Second Side</p>
+	<input type="text" name="nmbr2" id="nmbr2">
+	<button type="button" onclick="hypotenuse()">Find the Hypotenuse</button>
+	<p id="result"></p>
+
+	<script type="text/javascript">
+
+		function hypotenuse(){
+			var side1,side2,result;
+			side1 = Number(document.querySelector("#nmbr1").value);
+			side2 = Number(document.querySelector("#nmbr2").value);
+			result = document.querySelector("#result");
+			result.innerHTML="Hypotenuse: " + Math.sqrt(side1*side1+side2*side2);
+		}
+
+	</script>
+</body>
+</html>

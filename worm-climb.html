@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Worm Climbing</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<p>Bir Günde 7 birim yukarı tırmanan bir salyangoz akşamları 2 birim geri düşer. Aşağıdaki mesafeyi kaç günde tırmanır?</p>
+	<p id="rise"></p>
+	<input type="text" name="getResult" id="getResult">
+	<button type="button" onclick="Control()">Sonucu Kontrol Et</button>
+	<p id="result"></p>
+
+	<script type="text/javascript">
+
+		var rise,getResult,result;
+			rise = document.querySelector("#rise");
+			getResult = document.querySelector("#getResult");
+			result = document.querySelector("#result");
+
+		window.onload = function(){
+			newGame();
+		}
+
+		function newGame(){
+			rise.innerHTML=Math.floor(Math.random()*(50-10))+10;
+		}
+
+		function Control(){
+			var i,counter,Rise;
+			i = 2;
+			counter = 0;
+			Rise = Number(rise.innerHTML);
+			for(; i < Rise; i+=7){
+				if(i >= Rise){
+					break;
+				}
+				counter++;
+				i -= 2;
+			}
+			if(getResult.value == counter){
+				result.innerHTML = "Cevabınız doğru tebrikler, yeni soruyu cevaplayın";
+			}else{
+			result.innerHTML = "Cevabınız yanlış salyangoz "+Rise+" birim mesafeyi "+counter+" günde tırmanır. Yeni soruya bakın.";
+			}
+			newGame();
+			getResult.value = "";
+		}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Palindrom Uygulaması</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			background: #e74c3c;
+			color: #bdc3c7;
+		}
+		#container{
+			width: 500px;
+			margin: auto;
+			position: relative;
+			border: 2px solid #bdc3c7;
+			padding: 20px;
+		}
+		h1{
+			font-size: 40px;
+			text-align: center;
+		}
+		p{
+			font-size: 150%;
+			text-align: center;
+			padding: 10px;
+		}
+		#forms {
+			width: 100%;
+			position: relative;
+		}
+		#getValue{
+			display: inline-block;
+			width: 150px;
+			height: 23px;
+			margin: 0 20px 0 86px;
+		}
+		#translate {
+			display: inline-block;
+			width: 150px;
+			background: #bdc3c7;
+			color: #e74c3c;
+			font-size: 20px;
+			transition: all .2s ease;
+		}
+		#translate:hover{
+			background:  #e74c3c;
+			color: #bdc3c7;
+		}
+		#result {
+			margin: 20px auto;
+			text-align: center;
+			font-size: 25px;
+			border: 2px solid #bdc3c7;
+	
+	</style>
+</head>
+<body>
+
+	<div id="container">
+
+		<h1>Palindrom Uygulaması</h1>
+		<p>Tersten Yazdırmak İstediğiniz Kelimeyi Giriniz</p>
+		<div id="forms">
+			<input type="text" id="getValue">
+			<button type="button" id="translate" onclick="palindrom();">Ters Çevir</button>
+		</div>
+		<div style="clear: both;"></div>
+		<div id="result">Sonuç</div>
+
+	</div>
+
+	<script type="text/javascript">
+		// değişkenleri oluşturdum.
+		var getValue,translate,result;
+		getValue=document.getElementById("getValue");
+		translate=document.getElementById("translate");
+		result=document.getElementById("result");
+		
+		function palindrom() {
+			var Value,i,text,len;
+			Value = getValue.value;
+			i = Value.length-1;
+			text = "";
+			for(; i >= 0; i--){
+				text += Value.charAt(i);
+			}
+			result.innerHTML = text;
+		}
+
+	</script>
+</body>
+</html>

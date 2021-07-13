@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Math Game</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			background: #57606f;
+			color: #dfe4ea;
+		}
+		#container{
+			width: 400px;
+			margin: auto;
+			text-align: center;
+			border: 2px solid #dfe4ea;
+		}
+		#questionCon{
+			margin: auto;
+		}
+		#questionCon input{
+			margin-bottom: 5px;
+			height: 20px;
+		}
+		#container h1{
+			font-size: 40px;
+		}
+		#container span{
+			font-size: 30px;
+		}
+		#true{
+			background: green;
+			color: #dfe4ea;
+			border: 1px solid #dfe4ea;
+		}
+		#false{
+			background: red;
+			color: #dfe4ea;
+			border: 1px solid #dfe4ea;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="container">
+		<h1>Math Game</h1>
+
+		<div id="questionCon">
+			<span id="number1">2</span>
+			<span id="operator">+</span>
+			<span id="number2">2</span>
+			<span>=</span>
+			<input type="text" name="result" id="result">
+			<input type="button" name="Btn" id="Btn" onclick="controlResult()" value="Control">
+		</div>
+
+		<div id="tfcontainer">
+			<span id="true">0</span>
+			<span id="false">0</span>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+
+		var number1,operator,number2,result,button,True,False;
+
+		number1 = document.querySelector("#number1");
+		operator = document.querySelector("#operator");
+		number2 = document.querySelector("#number2");
+		result = document.querySelector("#result");
+		button = document.querySelector("#Btn");
+		True = document.querySelector("#true");
+		False = document.querySelector("#false");
+
+		function randomNumber(min,max){
+			return Math.floor(Math.random()*(max-min))+min;
+		}
+
+		function newQuestion(){
+
+			var Arrayop = ["+","-","*","/"];
+			number1.innerHTML = randomNumber(1,50);
+			number2.innerHTML = randomNumber(1,50);
+			operator.innerHTML = Arrayop[randomNumber(0,4)];
+			if(operator.innerHTML == "/"){
+				while(true){
+					number2.innerHTML = randomNumber(1,50);
+					if (number1.innerHTML%number2.innerHTML == 0){
+						break;
+					}
+				}
+			}
+		}
+
+		window.onload = function(){
+			newQuestion();
+		}
+
+		function controlResult(){
+
+			var n1,n2,ans;
+			n1 = Number(number1.innerHTML);
+			n2 = Number(number2.innerHTML);
+			ans = 0;
+
+			switch(operator.innerHTML){
+				case "+": ans = n1+n2; break;
+				case "-": ans = n1-n2; break;
+				case "*": ans = n1*n2; break;
+				case "/": ans = n1/n2; break;
+				default: break;
+			}
+
+			if(result.value == ans){
+				True.innerHTML = Number(True.innerHTML)+1;
+			} else {
+				False.innerHTML = Number(False.innerHTML)+1;
+			}
+
+			newQuestion();
+			result.value = "";
+		}
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculating The Area And Perimeter Of A Rectangle</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<p>Long Edge Length</p>
+	<input type="text" name="longEdge" id="longEdge">
+	<p>Short Edge Length</p>
+	<input type="text" name="shortEdge" id="shortEdge">
+	<p id="result"></p>
+	<button type="button" onclick="Calculate()">Calculate</button>
+
+	<script type="text/javascript">
+
+		function Calculate(){
+			var longEdge,shortEdge,result;
+
+			longEdge = Number(document.querySelector("#longEdge").value);
+			shortEdge = Number(document.querySelector("#shortEdge").value);
+			result = document.querySelector("#result");
+
+			result.innerHTML="Area of rectangle: "+(longEdge*shortEdge)+"<br> Perimeter of rectangle: "+(2*(longEdge+shortEdge));
+		}
+
+	</script>
+
+</body>
+</html>

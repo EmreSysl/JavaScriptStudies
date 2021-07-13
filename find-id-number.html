@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Find Identification Number</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			background: #c0392b;
+		}
+		#container{
+			width: 400px;
+			background: #16a085;
+			position: relative;
+			margin: auto;
+			border: 2px solid #bdc3c7;
+			padding: 20px;
+		}
+		p{
+			font-size: 25px;
+			text-align: center;
+		}
+		.inp{
+			width: 200px;
+			height: 30px;
+			margin: auto;
+		}
+		.inp input{
+			width: 200px;
+			height: 20px;
+		}
+		.inp #Btn{
+			width: 100px;
+			height: 30px;
+			font-size: 20px;
+			margin-left: 50px;
+		}
+		#result{
+			font-size:20px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="container">
+		<p>Kendi TC Kimlik Numaranızı Giriniz</p>
+		<div class="inp"><input type="text" name="ID" id="ID"></div>
+		<p>Kütük Sırasında Size Göre Pozisyon Giriniz</p>
+		<div class="inp"><input type="text" name="pos" id="pos"></div>
+		<div class="inp"><button type="button" id="Btn" onclick="javascript:findID()">Bul</button></div>
+		<p id="result"></p>
+	</div>
+
+	<script type="text/javascript">
+
+		function findID(){
+
+			var getID,getPos,result,draft,draftFirst,draftSecond,draftLast,i,j,k,l,odd=0,even=0,number10,number11=0; 
+			getID = document.querySelector("#ID");
+			getPos = document.querySelector("#pos");
+			result = document.querySelector("#result");
+			draft = Math.floor(getID.value/100);
+
+			draftFirst = draft-Number(getPos.value)*29999;
+			draftFirst = draftFirst.toString();
+
+			for(j=0;j<9;j+=2){
+				odd += Number(draftFirst.charAt(j));
+			}
+
+			odd *= 7;
+
+			for(k=1;k<9;k+=2){
+				even += Number(draftFirst.charAt(k))
+			}
+
+			number10 = (odd-even)%10;
+			number10 = number10.toString();
+			draftSecond = draftFirst+number10;
+
+			for(l=0;l<10;l++){
+				number11 += Number(draftSecond.charAt(l));
+			}
+
+			number11 = number11%10;
+			number11 = number11.toString();
+			draftLast = draftSecond+number11;
+
+			if(getPos.value<0){
+			result.innerHTML = "Kütük sırasında sizden "+(getPos.value*(-1))+" önceki kişinin kimlik numarası:"+draftLast;
+			} else{
+				result.innerHTML = "Kütük sırasında sizden "+getPos.value+" sonraki kişinin kimlik numarası:"+draftLast;
+			}
+		}
+
+		</script>
+
+</body>
+</html>
